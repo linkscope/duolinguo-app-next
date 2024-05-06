@@ -1,3 +1,9 @@
+import { Button } from '@/components/ui/button'
+
 export default function Home() {
-  return <div className="bg-sky-500 text-white">Hello Next</div>
+  return (
+    <div>
+      <Button size="lg">点击</Button>
+    </div>
+  )
 }
