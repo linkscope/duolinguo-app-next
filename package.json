@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.3",
+    "next": "^14.2.3",
     "react": "^18",
     "react-dom": "^18"
   },
@@ -21,11 +21,14 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
+    "@unocss/eslint-config": "^0.59.4",
+    "@unocss/postcss": "^0.58.9",
     "eslint": "^8.57.0",
     "eslint-config-alloy": "^5.1.2",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-react": "^7.34.1",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "unocss": "^0.58.9"
   }
 }
