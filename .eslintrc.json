@@ -1,0 +1,9 @@
+{
+  "extends": ["alloy", "alloy/react", "alloy/typescript", "plugin:tailwindcss/recommended", "next/core-web-vitals"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
+}
