@@ -7,9 +7,8 @@ export default function MarketingHeader() {
   return (
     <header className="h-20 w-full border-b-2 border-slate-200 px-4">
       <div className="mx-auto flex h-full items-center justify-between lg:max-w-screen-lg">
-        <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-          <Image src="/mascot.svg" height={40} width={40} alt="Mascot" />
-          <h1 className="text-2xl font-extrabold tracking-wide text-green-600">多邻国</h1>
+        <div className="pb-7 pl-4 pt-8">
+          <Image src="/mascot.svg" height={40} width={180} alt="Mascot" />
         </div>
         <ClerkLoading>
           <Loader className="size-5 text-muted-foreground" />
