@@ -14,7 +14,7 @@ export default function MarketingPage() {
         <h1 className="max-w-[480px] text-center text-xl font-bold text-neutral-600 lg:text-3xl">
           多邻国学外语，学会、玩会，还免费！
         </h1>
-        <div>
+        <div className="flex w-full max-w-[330px] flex-col items-center gap-y-3">
           <ClerkLoading>
             <Loader className="size-5 animate-spin text-muted-foreground" />
           </ClerkLoading>
