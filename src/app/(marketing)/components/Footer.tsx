@@ -10,6 +10,22 @@ export default function MarketingFooter() {
           中文
         </Button>
         <Button size="lg" variant="ghost" className="w-full">
+          <Image src="/ES.svg" alt="ES" width={40} height={32} className="mr-4 rounded-md" />
+          西班牙语
+        </Button>
+        <Button size="lg" variant="ghost" className="w-full">
+          <Image src="/FR.svg" alt="FR" width={40} height={32} className="mr-4 rounded-md" />
+          法语
+        </Button>
+        <Button size="lg" variant="ghost" className="w-full">
+          <Image src="/IT.svg" alt="IT" width={40} height={32} className="mr-4 rounded-md" />
+          意大利语
+        </Button>
+        <Button size="lg" variant="ghost" className="w-full">
+          <Image src="/JP.svg" alt="JP" width={40} height={32} className="mr-4 rounded-md" />
+          日语
+        </Button>
+        <Button size="lg" variant="ghost" className="w-full">
           <Image src="/US.svg" alt="US" width={40} height={32} className="mr-4 rounded-md" />
           英语
         </Button>
