@@ -45,12 +45,6 @@ export const lessons: (typeof schema.lessons.$inferSelect)[] = [
     order: 1,
     title: '名词',
   },
-  {
-    id: 2,
-    unitId: 1,
-    order: 2,
-    title: '动词',
-  },
 ]
 
 export const challenges: (typeof schema.challenges.$inferSelect)[] = [
