@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation'
 export default async function LearnPage() {
   const [userProgress] = await Promise.all([getUserProgress()])
 
-  if (!userProgress) {
+  if (!userProgress || !userProgress.activeCourse) {
     redirect('/courses')
   }
 
@@ -16,14 +16,14 @@ export default async function LearnPage() {
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress
-          activeCourses={{ title: '西班牙语', imageSrc: '/ES.svg' }}
-          hearts={5}
-          points={100}
+          activeCourses={userProgress.activeCourse}
+          hearts={userProgress.hearts}
+          points={userProgress.points}
           hasActiveSubscription={false}
         />
       </StickyWrapper>
       <FeedWrapper>
-        <LearnHeader title="西班牙语" />
+        <LearnHeader title={userProgress.activeCourse.title} />
         <div className="space-y-2">
           <div className="h-[700px] w-full bg-blue-500" />
           <div className="h-[700px] w-full bg-blue-500" />

@@ -2,9 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { InfinityIcon } from 'lucide-react'
+import type { courses } from '@/database'
 
 interface Props {
-  activeCourses: any // TODO: 替换为DB类型
+  activeCourses: typeof courses.$inferSelect
   hearts: number
   points: number
   hasActiveSubscription: boolean
