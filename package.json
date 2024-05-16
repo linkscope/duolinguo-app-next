@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:studio": "drizzle-kit studio",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "db:seed": "bun ./scripts/seed.ts"
   },
   "dependencies": {
     "@clerk/localizations": "^2.3.0",
