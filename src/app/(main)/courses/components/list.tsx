@@ -5,6 +5,7 @@ import CoursesCard from '@/app/(main)/courses/components/card'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 import { upsertUserProgress } from '@/actions/user-progress'
+import { toast } from 'sonner'
 
 interface Props {
   courses: (typeof courses.$inferSelect)[]
@@ -25,7 +26,7 @@ export default function CoursesList({ courses, activeCourseId }: Props) {
     }
 
     startTransition(() => {
-      upsertUserProgress(id)
+      upsertUserProgress(id).catch(() => toast.error('服务器错误'))
     })
   }
 
