@@ -19,7 +19,7 @@ export const units = pgTable('units', {
   id: serial('id').primaryKey(),
   title: text('title').notNull(),
   description: text('description').notNull(),
-  coursesId: integer('course_id')
+  courseId: integer('course_id')
     .references(() => courses.id, { onDelete: 'cascade' })
     .notNull(),
   order: integer('order').notNull(),
@@ -28,7 +28,7 @@ export const units = pgTable('units', {
 // 课程单元表关联课程、单元课程表
 export const unitsRelations = relations(units, ({ one, many }) => ({
   course: one(courses, {
-    fields: [units.coursesId],
+    fields: [units.courseId],
     references: [courses.id],
   }),
   lessons: many(lessons),
@@ -73,7 +73,7 @@ export const challengesRelations = relations(challenges, ({ one, many }) => ({
     references: [lessons.id],
   }),
   challengeOptions: many(challengeOptions),
-  challengeProgress: many(challengeProgress),
+  challengeProgresses: many(challengeProgress),
 }))
 
 // 单元课程问题选项表
@@ -83,7 +83,6 @@ export const challengeOptions = pgTable('challenge_options', {
     .references(() => challenges.id, { onDelete: 'cascade' })
     .notNull(),
   text: text('text').notNull(),
-  order: integer('order').notNull(),
   correct: boolean('correct').notNull(),
   imageSrc: text('image_src'),
   audioSrc: text('audio_src'),
