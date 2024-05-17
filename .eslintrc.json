@@ -5,5 +5,8 @@
       "files": ["*.ts", "*.tsx", "*.js"],
       "parser": "@typescript-eslint/parser"
     }
-  ]
+  ],
+  "rules": {
+    "max-nested-callbacks": "off"
+  }
 }

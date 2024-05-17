@@ -23,6 +23,8 @@ const buttonVariants = cva(
         ghost: 'border-0 border-transparent bg-transparent text-slate-500 hover:bg-slate-100',
         sidebar: 'border-2 border-transparent bg-transparent text-slate-500 transition-none hover:bg-slate-100',
         sidebarOutline: 'border-2 border-sky-300 bg-sky-500/15 text-sky-500 transition-none hover:bg-sky-500/20',
+        locked:
+          'border-b-4 border-neutral-400 bg-neutral-200 text-primary-foreground hover:bg-neutral-200/90 active:border-b-0',
       },
       size: {
         default: 'h-11 px-4 py-2',
