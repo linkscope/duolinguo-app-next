@@ -43,6 +43,10 @@ export const getUnits = cache(async () => {
   // 携带用户课程完成状态
   return data.map((unit) => {
     const lessonWithCompletedStatus = unit.lessons.map((lesson) => {
+      if (lesson.challenges.length === 0) {
+        return { ...lesson, completed: false }
+      }
+
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
         return (
           challenge.challengeProgresses &&

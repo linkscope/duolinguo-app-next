@@ -20,6 +20,9 @@ importers:
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
         version: 1.0.5(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-progress':
+        specifier: ^1.0.3
+        version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.3.1)(react@18.3.1)
@@ -62,6 +65,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.3)
+      zustand:
+        specifier: ^4.5.2
+        version: 4.5.2(@types/react@18.3.1)(react@18.3.1)
     devDependencies:
       '@babel/preset-react':
         specifier: ^7.24.1
@@ -831,6 +837,19 @@ packages:
 
   '@radix-ui/react-primitive@1.0.3':
     resolution: {integrity: sha512-yi58uVyoAcK/Nq1inRY56ZSjKypBNKTa/1mcL8qdl6oJeEaDbOldlzrGn7P6Q3Id5d+SYNGc5AJgc4vGhjs5+g==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-progress@1.0.3':
+    resolution: {integrity: sha512-5G6Om/tYSxjSeEdrb1VfKkfZfn/1IlPWd731h2RfPuSbIfNUgfqAwbKfJCg/PP6nuUCTrYzalwHSpSinoWoCag==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -2849,6 +2868,11 @@ packages:
       '@types/react':
         optional: true
 
+  use-sync-external-store@1.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   use-sync-external-store@1.2.2:
     resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
     peerDependencies:
@@ -2912,6 +2936,21 @@ packages:
 
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
+  zustand@4.5.2:
+    resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
 
 snapshots:
 
@@ -3552,6 +3591,17 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.5
       '@radix-ui/react-slot': 1.0.2(@types/react@18.3.1)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.1
+      '@types/react-dom': 18.3.0
+
+  '@radix-ui/react-progress@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.5
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
@@ -5851,6 +5901,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.1
 
+  use-sync-external-store@1.2.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+
   use-sync-external-store@1.2.2(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -5926,3 +5980,10 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zod@3.23.8: {}
+
+  zustand@4.5.2(@types/react@18.3.1)(react@18.3.1):
+    dependencies:
+      use-sync-external-store: 1.2.0(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.1
+      react: 18.3.1

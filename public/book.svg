@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="212px" height="212px" viewBox="0 0 212 212" version="1.1">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>book</title>
+    <desc>Created with Sketch.</desc>
+    <g id="book" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(22.000000, 37.000000)">
+            <rect id="Rectangle-51" fill="#1899D6" x="67" y="124" width="35" height="16" rx="4"/>
+            <path d="M8,4 L161,4 C165.418278,4 169,7.581722 169,12 L169,128 C169,132.418278 165.418278,136 161,136 L8,136 C3.581722,136 5.41083001e-16,132.418278 0,128 L0,12 C-5.41083001e-16,7.581722 3.581722,4 8,4 Z" id="Rectangle-42" fill="#1899D6"/>
+            <rect id="Rectangle-51" fill="#D2E4E8" x="70" y="115" width="29" height="13" rx="4"/>
+            <path d="M11,97 L159,97 L159,119 C159,121.209139 157.209139,123 155,123 L85.0019531,123 L85.0019531,123 L61.9980469,123 L15,123 C12.790861,123 11,121.209139 11,119 L11,97 L11,97 Z" id="Rectangle-50" fill="#D2E4E8"/>
+            <path d="M71,9 C78.6275002,9 84.8303269,15.0997524 84.996578,22.687355 L85,23 C85,15.2680135 91.2680135,9 99,9 L99,9 L155,9 C157.209139,9 159,10.790861 159,13 L159,13 L159,109 L99,109 C91.2680135,109 85,115.268014 85,123 L84.996578,122.687355 C84.8303269,115.099752 78.6275002,109 71,109 L71,109 L11,109 L11,13 C11,10.790861 12.790861,9 15,9 L71,9 Z" id="Combined-Shape" fill="#FFFFFF"/>
+            <rect id="Rectangle" fill="#D2E4E8" x="19" y="19" width="56" height="9" rx="3"/>
+            <rect id="Rectangle-Copy-2" fill="#D2E4E8" x="19" y="60" width="56" height="9" rx="3"/>
+            <rect id="Rectangle-Copy" fill="#D2E4E8" x="19" y="40" width="45" height="9" rx="3"/>
+            <rect id="Rectangle-Copy-3" fill="#D2E4E8" x="19" y="80" width="45" height="9" rx="3"/>
+            <path d="M35,0 L58,0 C59.6568542,-1.77594138e-15 61,1.34314575 61,3 L61,74.9353042 C61,76.5921585 59.6568542,77.9353042 58,77.9353042 C57.4562977,77.9353042 56.9228162,77.7875468 56.4565872,77.5078277 L47.5997398,72.194068 C46.6212361,71.6070044 45.3944034,71.6258957 44.4344392,72.2428087 L36.6218878,77.2634791 C35.228041,78.159223 33.3719611,77.7554308 32.4762172,76.3615841 C32.1653017,75.8777756 32,75.3147954 32,74.7396962 L32,3 C32,1.34314575 33.3431458,7.48448398e-16 35,0 Z" id="Rectangle-49" fill="#FF4B4B"/>
+            <rect id="Rectangle" fill="#D2E4E8" x="96" y="19" width="56" height="9" rx="3"/>
+            <rect id="Rectangle-Copy-2" fill="#D2E4E8" x="96" y="60" width="56" height="9" rx="3"/>
+            <rect id="Rectangle-Copy" fill="#D2E4E8" x="96" y="40" width="45" height="9" rx="3"/>
+            <rect id="Rectangle-Copy-3" fill="#D2E4E8" x="96" y="80" width="45" height="9" rx="3"/>
+        </g>
+    </g>
+    <div xmlns="" id="immersive-translate-popup" style="all: initial"/></svg>
