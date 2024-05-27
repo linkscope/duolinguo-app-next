@@ -9,6 +9,7 @@ import LessonFooter from '@/app/lesson/components/footer'
 import { upsertChallengeProgress } from '@/actions/challenge-progress'
 import { toast } from 'sonner'
 import { reduceHearts } from '@/actions/user-progress'
+import { redirect } from 'next/navigation'
 
 interface Props {
   initialPercentage: number
@@ -39,6 +40,10 @@ export default function LessonQuiz({
   })
   const [selectedOption, setSelectedOption] = useState<number>()
   const [status, setStatus] = useState<'correct' | 'wrong' | 'none'>('none')
+
+  if (activeIndex === challenges.length) {
+    redirect('/learn')
+  }
 
   const challenge = challenges[activeIndex]
   const title = challenge.type === 'ASSIST' ? '选择正确的含义' : challenge.question
