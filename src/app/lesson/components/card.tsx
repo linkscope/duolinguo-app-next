@@ -1,6 +1,8 @@
 import type { challengeOptions, challenges } from '@/database'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import { useCallback } from 'react'
+import { useAudio, useKey } from 'react-use'
 
 interface Props {
   option: typeof challengeOptions.$inferSelect
@@ -13,6 +15,18 @@ interface Props {
 }
 
 export default function LessonCard({ option, shortcut, selected, onClick, disabled, status, type }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [audio, _, controls] = useAudio({ src: option.audioSrc || '' })
+
+  const handleClick = useCallback(() => {
+    if (disabled) return
+
+    controls.play()
+    onClick()
+  }, [disabled, onClick, controls])
+
+  useKey(shortcut, handleClick, {}, [handleClick])
+
   return (
     <div
       className={cn(
@@ -23,8 +37,9 @@ export default function LessonCard({ option, shortcut, selected, onClick, disabl
         disabled && 'pointer-events-none hover:bg-white',
         type === 'ASSIST' && 'lg:p-3 w-full',
       )}
-      onClick={() => {}}
+      onClick={handleClick}
     >
+      {audio}
       {option.imageSrc && (
         <div className="relative mb-4 aspect-square max-h-[80px] w-full lg:max-h-[150px]">
           <Image src={option.imageSrc} alt={option.text} fill />

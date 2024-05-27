@@ -5,6 +5,7 @@ import LessonHeader from '@/app/lesson/components/header'
 import { useState } from 'react'
 import LessonQuestionBubble from '@/app/lesson/components/question-bubble'
 import LessonChallenge from '@/app/lesson/components/challenge'
+import LessonFooter from '@/app/lesson/components/footer'
 
 interface Props {
   initialPercentage: number
@@ -31,10 +32,18 @@ export default function LessonQuiz({
     const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed)
     return uncompletedIndex === -1 ? 0 : uncompletedIndex
   })
+  const [selectedOption, setSelectedOption] = useState<number>()
+  const [status, setStatus] = useState<'correct' | 'wrong' | 'none'>('none')
 
   const challenge = challenges[activeIndex]
   const title = challenge.type === 'ASSIST' ? '选择正确的含义' : challenge.question
   const options = challenge?.challengeOptions ?? []
+
+  const onSelect = (id: number) => {
+    if (status !== 'none') return
+
+    setSelectedOption(id)
+  }
 
   return (
     <>
@@ -47,9 +56,9 @@ export default function LessonQuiz({
               {challenge.type === 'ASSIST' && <LessonQuestionBubble question={challenge.question} />}
               <LessonChallenge
                 options={options}
-                onSelect={() => {}}
-                status="correct"
-                selectedOption={undefined}
+                onSelect={onSelect}
+                status={status}
+                selectedOption={selectedOption}
                 disabled={false}
                 type={challenge.type}
               />
@@ -57,6 +66,7 @@ export default function LessonQuiz({
           </div>
         </div>
       </div>
+      <LessonFooter disabled={!selectedOption} status={status} onCheck={() => {}} />
     </>
   )
 }
