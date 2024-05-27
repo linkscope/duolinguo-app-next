@@ -12,7 +12,7 @@ interface Props {
 
 export default function LessonFooter({ onCheck, status, lessonId, disabled }: Props) {
   useKey('Enter', onCheck, {}, [onCheck])
-  const isMobile = useMedia('(max-width: 1024px)')
+  const isMobile = useMedia('(max-width: 1024px)', true)
 
   return (
     <footer

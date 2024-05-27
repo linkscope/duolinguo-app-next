@@ -1,10 +1,10 @@
 'use server'
 
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { getCourseById, getUserProgress, db, userProgress } from '@/database'
+import { getCourseById, getUserProgress, db, userProgress, challengeProgress, challenges } from '@/database'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = auth()
@@ -49,4 +49,50 @@ export const upsertUserProgress = async (courseId: number) => {
   revalidatePath('/courses')
   revalidatePath('/learn')
   redirect('/learn')
+}
+
+export const reduceHearts = async (challengeId: number) => {
+  const { userId } = auth()
+  if (!userId) {
+    throw new Error('未认证')
+  }
+
+  const currentUserProgress = await getUserProgress()
+  if (!currentUserProgress) {
+    throw new Error('用户进度未找到')
+  }
+
+  const challenge = await db.query.challenges.findFirst({
+    where: eq(challenges.id, challengeId),
+  })
+  if (!challenge) {
+    throw new Error('未找到挑战')
+  }
+
+  const existChallengeProgress = await db.query.challengeProgress.findFirst({
+    where: and(eq(challengeProgress.userId, userId), eq(challengeProgress.challengeId, challengeId)),
+  })
+  const isPractice = !!existChallengeProgress
+  if (isPractice) {
+    return { error: 'practice' }
+  }
+
+  // TODO: 处理订阅
+
+  if (currentUserProgress.hearts === 0) {
+    return { error: 'hearts' }
+  }
+
+  await db
+    .update(userProgress)
+    .set({
+      hearts: Math.max(currentUserProgress.hearts - 1, 0),
+    })
+    .where(eq(userProgress.userId, userId))
+
+  revalidatePath('/shop')
+  revalidatePath('/learn')
+  revalidatePath('/quests')
+  revalidatePath('/leaderboard')
+  revalidatePath(`/lesson/${challenge.lessonId}`)
 }
