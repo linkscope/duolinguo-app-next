@@ -96,3 +96,33 @@ export const reduceHearts = async (challengeId: number) => {
   revalidatePath('/leaderboard')
   revalidatePath(`/lesson/${challenge.lessonId}`)
 }
+
+export const refillHearts = async () => {
+  const currentUserProgress = await getUserProgress()
+
+  if (!currentUserProgress) {
+    throw new Error('用户进度未找到')
+  }
+
+  if (currentUserProgress.hearts === 5) {
+    throw new Error('红心已满')
+  }
+
+  if (currentUserProgress.points < 10) {
+    throw new Error('没有足够的点数')
+  }
+
+  await db
+    .update(userProgress)
+    .set({
+      hearts: 5,
+      points: currentUserProgress.points - 10,
+    })
+    .where(eq(userProgress.userId, currentUserProgress.userId))
+
+  revalidatePath('/shop')
+  revalidatePath('/learn')
+  revalidatePath('/quests')
+  revalidatePath('/leaderboard')
+  revalidatePath('/lesson')
+}
