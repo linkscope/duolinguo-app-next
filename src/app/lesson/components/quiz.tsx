@@ -6,10 +6,14 @@ import { useState, useTransition } from 'react'
 import LessonQuestionBubble from '@/app/lesson/components/question-bubble'
 import LessonChallenge from '@/app/lesson/components/challenge'
 import LessonFooter from '@/app/lesson/components/footer'
+import LessonResultCard from '@/app/lesson/components/result-card'
 import { upsertChallengeProgress } from '@/actions/challenge-progress'
 import { toast } from 'sonner'
 import { reduceHearts } from '@/actions/user-progress'
-import { redirect } from 'next/navigation'
+import { useAudio, useWindowSize } from 'react-use'
+import Image from 'next/image'
+import Confetti from 'react-confetti'
+import { useRouter } from 'next/navigation'
 
 interface Props {
   initialPercentage: number
@@ -29,10 +33,18 @@ export default function LessonQuiz({
   initialLessonChallenges,
   userSubscription,
 }: Props) {
+  const router = useRouter()
+  const { width, height } = useWindowSize()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [correctAudio, _c, correctControls] = useAudio({ src: '/correct.wav' })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [incorrectAudio, _i, incorrectControls] = useAudio({ src: '/incorrect.wav' })
+  const [finishAudio] = useAudio({ src: '/finish.mp3', autoPlay: true })
   const [pending, startTransition] = useTransition()
 
   const [hearts, setHearts] = useState(initialHearts)
   const [percentage, setPercentage] = useState(initialPercentage)
+  const [lessonId] = useState(initialLessonId)
   const [challenges] = useState(initialLessonChallenges)
   const [activeIndex, setActiveIndex] = useState(() => {
     const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed)
@@ -41,11 +53,35 @@ export default function LessonQuiz({
   const [selectedOption, setSelectedOption] = useState<number>()
   const [status, setStatus] = useState<'correct' | 'wrong' | 'none'>('none')
 
-  if (activeIndex === challenges.length) {
-    redirect('/learn')
+  const challenge = challenges[activeIndex]
+  if (!challenge) {
+    return (
+      <>
+        {finishAudio}
+        <Confetti recycle={false} numberOfPieces={500} tweenDuration={10000} width={width} height={height} />
+        <div className="mx-auto flex h-full max-w-lg flex-col items-center justify-center gap-y-4 text-center lg:gap-y-8">
+          <Image src="/finish.svg" alt="Finish" className="hidden lg:block" height={100} width={100} />
+          <Image src="/finish.svg" alt="Finish" className="block lg:hidden" height={50} width={50} />
+          <h1 className="text-xl font-bold text-neutral-700 lg:text-3xl">
+            干得漂亮！
+            <br /> 你已经完成了本课程。
+          </h1>
+          <div className="flex w-full items-center gap-x-4">
+            <LessonResultCard variant="points" value={challenges.length * 10} />
+            <LessonResultCard variant="hearts" value={hearts} />
+          </div>
+        </div>
+        <LessonFooter
+          lessonId={lessonId}
+          onCheck={() => {
+            router.push('/learn')
+          }}
+          status="completed"
+        />
+      </>
+    )
   }
 
-  const challenge = challenges[activeIndex]
   const title = challenge.type === 'ASSIST' ? '选择正确的含义' : challenge.question
   const options = challenge?.challengeOptions ?? []
 
@@ -87,6 +123,7 @@ export default function LessonQuiz({
               return
             }
 
+            correctControls.play()
             setStatus('correct')
             setPercentage((prev) => prev + 100 / challenges.length)
 
@@ -105,6 +142,7 @@ export default function LessonQuiz({
               return
             }
 
+            incorrectControls.play()
             setStatus('wrong')
 
             if (!response?.error) {
@@ -118,6 +156,8 @@ export default function LessonQuiz({
 
   return (
     <>
+      {correctAudio}
+      {incorrectAudio}
       <LessonHeader hearts={hearts} percentage={percentage} hasActiveSubscription={!!userSubscription?.isActive} />
       <div className="flex-1">
         <div className="flex h-full items-center justify-center">
