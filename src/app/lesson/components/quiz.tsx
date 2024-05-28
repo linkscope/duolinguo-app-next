@@ -14,6 +14,7 @@ import { useAudio, useWindowSize } from 'react-use'
 import Image from 'next/image'
 import Confetti from 'react-confetti'
 import { useRouter } from 'next/navigation'
+import { useHeartsModal } from '@/store/use-hearts-modal'
 
 interface Props {
   initialPercentage: number
@@ -34,6 +35,7 @@ export default function LessonQuiz({
   userSubscription,
 }: Props) {
   const router = useRouter()
+  const { open: openHeartsModal } = useHeartsModal()
   const { width, height } = useWindowSize()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [correctAudio, _c, correctControls] = useAudio({ src: '/correct.wav' })
@@ -119,7 +121,7 @@ export default function LessonQuiz({
         upsertChallengeProgress(challenge.id)
           .then((response) => {
             if (response?.error === 'hearts') {
-              console.error('hearts')
+              openHeartsModal()
               return
             }
 
@@ -138,7 +140,7 @@ export default function LessonQuiz({
         reduceHearts(challenge.id)
           .then((response) => {
             if (response?.error === 'hearts') {
-              console.error('hearts')
+              openHeartsModal()
               return
             }
 
