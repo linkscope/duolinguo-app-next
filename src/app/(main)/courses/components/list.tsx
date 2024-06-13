@@ -37,7 +37,7 @@ export default function CoursesList({ courses, activeCourseId }: Props) {
           key={course.id}
           course={course}
           onClick={onClick}
-          disabled={pending}
+          disabled={pending || course.title !== '英语'}
           active={course.id === activeCourseId}
         />
       ))}
