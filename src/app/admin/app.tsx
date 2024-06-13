@@ -11,6 +11,9 @@ import UnitEdit from '@/app/admin/unit/edit'
 import LessonList from '@/app/admin/lesson/list'
 import LessonCreate from '@/app/admin/lesson/craete'
 import LessonEdit from '@/app/admin/lesson/edit'
+import ChallengeList from '@/app/admin/challenge/list'
+import ChallengeCreate from '@/app/admin/challenge/craete'
+import ChallengeEdit from '@/app/admin/challenge/edit'
 
 export default function AdminApp() {
   return (
@@ -38,6 +41,14 @@ export default function AdminApp() {
         edit={LessonEdit}
         recordRepresentation="title"
         options={{ label: '课程管理' }}
+      />
+      <Resource
+        name="challenges"
+        list={ChallengeList}
+        create={ChallengeCreate}
+        edit={ChallengeEdit}
+        recordRepresentation="title"
+        options={{ label: '问题管理' }}
       />
     </Admin>
   )

@@ -7,7 +7,7 @@ export default function UnitList() {
         <TextField source="id" label="ID" />
         <TextField source="title" label="单元名称" />
         <TextField source="description" label="单元描述" />
-        <ReferenceField source="courseId" reference="courses" />
+        <ReferenceField source="courseId" reference="courses" label="关联课程" />
         <NumberField source="order" label="排序" />
       </Datagrid>
     </List>
