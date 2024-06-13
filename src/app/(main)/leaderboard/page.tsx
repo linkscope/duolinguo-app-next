@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
-export default async function leaderboardPage() {
+export default async function LeaderboardPage() {
   const [userProgress, leaderboard] = await Promise.all([getUserProgress(), getTopTenUsers()])
 
   if (!userProgress || !userProgress.activeCourse) {
@@ -27,7 +27,7 @@ export default async function leaderboardPage() {
         <div className="flex w-full flex-col items-center">
           <Image src="/leaderboard.svg" alt="Leaderboard" height={90} width={90} />
           <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">排行榜</h1>
-          <p className="mb-6 text-center text-lg text-muted-foreground">查看你在其余学习者中的学习进度排行。</p>
+          <p className="mb-6 text-center text-lg text-muted-foreground">查看你在其余学习者中的学习进度排行</p>
         </div>
         <Separator className="mb-4 h-0.5 rounded-full" />
         {leaderboard.map((userProgress, index) => (
