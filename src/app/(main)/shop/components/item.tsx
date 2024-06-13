@@ -9,10 +9,9 @@ import { toast } from 'sonner'
 interface Props {
   hearts: number
   points: number
-  hasActiveSubscription: boolean
 }
 
-export default function ShopItem({ hearts, points, hasActiveSubscription }: Props) {
+export default function ShopItem({ hearts, points }: Props) {
   const [pending, startTransition] = useTransition()
 
   const onRefillHearts = () => {

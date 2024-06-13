@@ -178,3 +178,23 @@ export const getLessonPercentage = cache(async () => {
   const completedChallenges = lesson.challenges.filter((challenge) => challenge.completed)
   return Math.round((completedChallenges.length / lesson.challenges.length) * 100)
 })
+
+// 获取排行榜
+export const getTopTenUsers = cache(async () => {
+  const { userId } = auth()
+
+  if (!userId) {
+    return []
+  }
+
+  return db.query.userProgress.findMany({
+    orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
+    limit: 10,
+    columns: {
+      userId: true,
+      userName: true,
+      userImageSrc: true,
+      points: true,
+    },
+  })
+})

@@ -30,7 +30,6 @@ export default async function LearnPage() {
           activeCourses={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
-          hasActiveSubscription={false}
         />
       </StickyWrapper>
       <FeedWrapper>

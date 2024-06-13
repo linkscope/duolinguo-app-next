@@ -8,10 +8,9 @@ interface Props {
   activeCourses: typeof courses.$inferSelect
   hearts: number
   points: number
-  hasActiveSubscription: boolean
 }
 
-export default function UserProgress({ activeCourses, hearts, points, hasActiveSubscription }: Props) {
+export default function UserProgress({ activeCourses, hearts, points }: Props) {
   return (
     <div className="flex w-full items-center justify-between gap-x-2">
       <Link href="/courses">
@@ -34,7 +33,7 @@ export default function UserProgress({ activeCourses, hearts, points, hasActiveS
       <Link href="/shop">
         <Button variant="ghost" className="text-rose-500">
           <Image src="/heart.svg" alt="Hearts" height={22} width={22} className="mr-2" />
-          {hasActiveSubscription ? <InfinityIcon className="size-4 stroke-[3]" /> : hearts}
+          {hearts}
         </Button>
       </Link>
     </div>

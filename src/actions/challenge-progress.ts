@@ -13,7 +13,6 @@ export const upsertChallengeProgress = async (challengeId: number) => {
   }
 
   const currentUserProgress = await getUserProgress()
-  // TODO: 稍后处理订阅信息
 
   if (!currentUserProgress) {
     throw new Error('未找到用户进度')

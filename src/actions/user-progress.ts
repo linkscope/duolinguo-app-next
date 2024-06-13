@@ -77,8 +77,6 @@ export const reduceHearts = async (challengeId: number) => {
     return { error: 'practice' }
   }
 
-  // TODO: 处理订阅
-
   if (currentUserProgress.hearts === 0) {
     return { error: 'hearts' }
   }

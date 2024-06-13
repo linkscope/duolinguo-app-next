@@ -8,10 +8,9 @@ import { useExitModal } from '@/store/use-exit-modal'
 interface Props {
   hearts: number
   percentage: number
-  hasActiveSubscription: boolean
 }
 
-export default function LessonHeader({ hearts, percentage, hasActiveSubscription }: Props) {
+export default function LessonHeader({ hearts, percentage }: Props) {
   const { open } = useExitModal()
 
   return (
@@ -20,7 +19,7 @@ export default function LessonHeader({ hearts, percentage, hasActiveSubscription
       <Progress value={percentage} />
       <div className="flex items-center font-bold text-rose-500">
         <Image src="/heart.svg" alt="heart" width={28} height={28} className="mr-2" />
-        {hasActiveSubscription ? <InfinityIcon className="size-6 stroke-[3]" /> : hearts}
+        {hearts}
       </div>
     </header>
   )
