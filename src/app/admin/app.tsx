@@ -14,6 +14,9 @@ import LessonEdit from '@/app/admin/lesson/edit'
 import ChallengeList from '@/app/admin/challenge/list'
 import ChallengeCreate from '@/app/admin/challenge/craete'
 import ChallengeEdit from '@/app/admin/challenge/edit'
+import ChallengeOptionList from '@/app/admin/challengeOption/list'
+import ChallengeOptionCreate from '@/app/admin/challengeOption/craete'
+import ChallengeOptionEdit from '@/app/admin/challengeOption/edit'
 
 export default function AdminApp() {
   return (
@@ -47,8 +50,16 @@ export default function AdminApp() {
         list={ChallengeList}
         create={ChallengeCreate}
         edit={ChallengeEdit}
-        recordRepresentation="title"
+        recordRepresentation="question"
         options={{ label: '问题管理' }}
+      />
+      <Resource
+        name="challengeOptions"
+        list={ChallengeOptionList}
+        create={ChallengeOptionCreate}
+        edit={ChallengeOptionEdit}
+        recordRepresentation="text"
+        options={{ label: '问题文本管理' }}
       />
     </Admin>
   )

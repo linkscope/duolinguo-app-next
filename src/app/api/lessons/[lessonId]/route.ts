@@ -8,7 +8,7 @@ export const GET = async (_: Request, { params }: { params: { lessonId: number }
     return NextResponse.json('Unauthorized', { status: 403 })
   }
 
-  const data = await db.query.courses.findFirst({
+  const data = await db.query.lessons.findFirst({
     where: eq(lessons.id, params.lessonId),
   })
 
