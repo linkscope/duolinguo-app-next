@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import FeedWrapper from '@/components/feed-wrapper'
 import Image from 'next/image'
 import ShopItem from '@/app/(main)/shop/components/item'
+import Quests from '@/components/quests'
 
 export default async function ShopPage() {
   const [userProgress] = await Promise.all([getUserProgress()])
@@ -21,6 +22,7 @@ export default async function ShopPage() {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <div className="flex w-full flex-col items-center">

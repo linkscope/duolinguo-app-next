@@ -5,29 +5,7 @@ import UserProgress from '@/components/user-progress'
 import FeedWrapper from '@/components/feed-wrapper'
 import Image from 'next/image'
 import { Progress } from '@/components/ui/progress'
-
-const quests = [
-  {
-    title: '赚取20XP',
-    value: 20,
-  },
-  {
-    title: '赚取50XP',
-    value: 50,
-  },
-  {
-    title: '赚取100XP',
-    value: 100,
-  },
-  {
-    title: '赚取500XP',
-    value: 500,
-  },
-  {
-    title: '赚取1000XP',
-    value: 1000,
-  },
-]
+import { quests } from '@/constants'
 
 export default async function QuestsPage() {
   const [userProgress] = await Promise.all([getUserProgress()])

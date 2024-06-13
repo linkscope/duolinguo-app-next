@@ -6,6 +6,7 @@ import UserProgress from '@/components/user-progress'
 import type { lessons, units as unitsSchema } from '@/database'
 import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } from '@/database'
 import { redirect } from 'next/navigation'
+import Quests from '@/components/quests'
 
 export default async function LearnPage() {
   const [userProgress, units, courseProgress, lessonPercentage] = await Promise.all([
@@ -31,6 +32,7 @@ export default async function LearnPage() {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <LearnHeader title={userProgress.activeCourse.title} />

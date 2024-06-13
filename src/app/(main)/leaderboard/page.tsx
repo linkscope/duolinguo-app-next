@@ -6,6 +6,7 @@ import FeedWrapper from '@/components/feed-wrapper'
 import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import Quests from '@/components/quests'
 
 export default async function LeaderboardPage() {
   const [userProgress, leaderboard] = await Promise.all([getUserProgress(), getTopTenUsers()])
@@ -22,6 +23,7 @@ export default async function LeaderboardPage() {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <div className="flex w-full flex-col items-center">
