@@ -8,6 +8,9 @@ import CourseEdit from '@/app/admin/course/edit'
 import UnitList from '@/app/admin/unit/list'
 import UnitCreate from '@/app/admin/unit/craete'
 import UnitEdit from '@/app/admin/unit/edit'
+import LessonList from '@/app/admin/lesson/list'
+import LessonCreate from '@/app/admin/lesson/craete'
+import LessonEdit from '@/app/admin/lesson/edit'
 
 export default function AdminApp() {
   return (
@@ -27,6 +30,14 @@ export default function AdminApp() {
         edit={UnitEdit}
         recordRepresentation="title"
         options={{ label: '单元管理' }}
+      />
+      <Resource
+        name="lessons"
+        list={LessonList}
+        create={LessonCreate}
+        edit={LessonEdit}
+        recordRepresentation="title"
+        options={{ label: '课程管理' }}
       />
     </Admin>
   )

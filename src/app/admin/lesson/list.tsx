@@ -1,13 +1,12 @@
 import { Datagrid, List, NumberField, ReferenceField, TextField } from 'react-admin'
 
-export default function UnitList() {
+export default function LessonList() {
   return (
     <List>
       <Datagrid rowClick="edit">
         <TextField source="id" label="ID" />
-        <TextField source="title" label="单元名称" />
-        <TextField source="description" label="单元描述" />
-        <ReferenceField source="courseId" reference="courses" />
+        <TextField source="title" label="课程名称" />
+        <ReferenceField source="unitId" reference="units" />
         <NumberField source="order" label="排序" />
       </Datagrid>
     </List>
